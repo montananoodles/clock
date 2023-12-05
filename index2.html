@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="clock"></div>
+    <script>
+        const uptLog = () => {
+            const now = new Date();
+            const h = now.getHours();
+            const m = now.getMinutes();
+            const s = now.getSeconds();
+            const ms = now.getMilliseconds();
+
+            // Use a sine function for smoother color transition
+            const frequency = 0.1; // Adjust the frequency for the color change speed
+            const colorR = Math.sin(frequency * h + ms / 1000) * 127 + 128;
+            const colorG = Math.sin(frequency * m + ms / 1000) * 127 + 128;
+            const colorB = Math.sin(frequency * s + ms / 1000) * 127 + 128;
+
+            console.log(`rgb(${colorR}, ${colorG}, ${colorB})`);
+
+            // Apply the color to the body background
+            document.body.style.backgroundColor = `rgb(${colorR}, ${colorG}, ${colorB})`;
+
+            // Display the time
+            clock.innerHTML = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        };
+
+        setInterval(uptLog, 100);
+    </script>
+</body>
+
+</html>

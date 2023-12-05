@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #clock {
+            font-size: 700%;
+            text-align: center;
+            margin-top: 18%;
+
+        }
+
+
+        body {
+            background-image: url(media/background2.gif);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="clock"></div>
+    <script>
+
+        const uptLog = () => {
+            const h = new Date().getHours();
+            const m = new Date().getMinutes();
+            const s = new Date().getSeconds();
+            const ms = new Date().getMilliseconds();
+            console.log(`rgb(${ms * 10 % 255}, ${ms * 20 % 255}, ${ms * 30 % 255})`);
+            const hC = `rgb(${ms * 20 % 255}, ${ms * 30 % 255}, ${ms * 40 % 255})`
+            const mC = `rgb(${ms * 1 % 255}, ${ms * 25 % 255}, ${ms * 35 % 255})`
+            const sC = `rgb(${ms * 30 % 255}, ${ms * 40 % 255}, ${ms * 70 % 255})`
+            // clock.innerHTML = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+            clock.innerHTML =
+               `<span style="color: ${hC}">${h < 10 ? "0" + h : h}</span>  <span style="color: yellow">:</span>
+                <span style="color: ${mC}">${m < 10 ? "0" + m : m}</span>  <span style="color: yellow">:</span>
+                <span style="color: ${sC}">${s < 10 ? "0" + s : s}</span>`
+                ;
+            if (h >= 16 || h < 6) {
+                document.body.style.backgroundImage = "url(media/background.gif)"
+
+            } else {
+                document.body.style.backgroundImage = "url(media/background2.gif)"
+
+            }
+        }
+        setInterval(uptLog, 200)
+
+
+    </script>
+</body>
+
+</html>
